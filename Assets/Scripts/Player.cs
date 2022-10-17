@@ -21,7 +21,15 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(moveVal.x * speed, moveVal.y * speed);
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.transform.tag == "Wall"){
+            moveVal = Vector2.zero;
+        }
+    }
+
     void OnMove(InputValue value){
         moveVal = value.Get<Vector2>();
     }
+
+    
 }
