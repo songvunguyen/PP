@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(moveVal.x * speed, moveVal.y * speed);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnCollisionEnter2D(Collision2D other) {
         if (other.transform.tag == "Wall"){
             moveVal = Vector2.zero;
         }
