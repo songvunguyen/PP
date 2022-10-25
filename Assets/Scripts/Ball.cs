@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     Rigidbody2D rb;
     public float speed = 10f;
+    public UIController ui;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,5 +63,10 @@ public class Ball : MonoBehaviour
             // Set Velocity with dir * speed
             rb.velocity = dir * speed;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        this.transform.position = new Vector2(0,0);
+        ui.updateScore(other.name);
     }
 }

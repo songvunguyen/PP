@@ -854,7 +854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &923093026
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1895,6 +1895,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1656640810971699915, guid: ca9552e15e9efd9eb8d50d79a22367bf, type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 1253564485}
     - target: {fileID: 3830607661831498341, guid: ca9552e15e9efd9eb8d50d79a22367bf, type: 3}
       propertyPath: m_Name
       value: Ball
