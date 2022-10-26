@@ -8,6 +8,10 @@ public class UIController : MonoBehaviour
     int player1Score = 0;
     int player2Score = 0;
     TextMeshProUGUI score;
+    TextMeshProUGUI winText;
+    public GameObject pnb; //player and ball game object
+    public GameObject goMenu; //gameover menu game object
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +21,9 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(player1Score == 10 || player2Score == 10){
+            GameOver();
+        }
     }
 
     public void updateScore(string side){
@@ -29,6 +35,17 @@ public class UIController : MonoBehaviour
             player1Score++;
             score.text = player1Score.ToString()+ " - " +player2Score.ToString();
         }
-    } 
+    }
+
+    public void GameOver(){
+        pnb.SetActive(false);
+        goMenu.SetActive(true);
+        winText = GameObject.Find("GameOver/Header").GetComponent<TextMeshProUGUI>();
+        if(player1Score == 10){
+            winText.text = "PLAYER 1 WIN";
+        }else if(player2Score == 10){
+            winText.text = "PLAYER 2 WIN";
+        }
+    }
 
 }
