@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
     Rigidbody2D rb;
     public float speed = 10f;
     public UIController ui;
+    Vector2 lastV; //keep track of the velocity that ball hit the wall
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        lastV = rb.velocity;
     }
 
     //Adding reflect directions to the ball
@@ -63,10 +64,42 @@ public class Ball : MonoBehaviour
             // Set Velocity with dir * speed
             rb.velocity = dir * speed;
         }
+
+        // Hit wall, formula from https://www.youtube.com/watch?v=RoZG5RARGF0 to calculate the ball reflection
+         if (other.gameObject.tag == "Wall") {
+            float s = lastV.magnitude;
+
+            Vector2 dir = Vector2.Reflect(lastV.normalized, other.contacts[0].normal );
+
+            rb.velocity = dir * Mathf.Max(s, 0f);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        this.transform.position = new Vector2(0,0);
+        resetBall(other.name);
         ui.updateScore(other.name);
     }
+
+    //Reset ball position everytime someone score
+    void resetBall(string side){
+        this.transform.position = new Vector2(0,0);
+        rb.velocity = Vector2.zero;
+        StartCoroutine(BallTimer(side));
+    }
+
+    IEnumerator BallTimer(string s)
+    {
+        
+        yield return new WaitForSeconds(1);
+
+        //Determine who get the ball next based on who just scored
+        if(s == "Right"){
+            rb.velocity = Vector2.left * speed;
+        }else if(s == "Left"){
+            rb.velocity = Vector2.right * speed;
+        }
+         
+    }
+
 }

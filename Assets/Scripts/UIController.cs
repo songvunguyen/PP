@@ -22,11 +22,11 @@ public class UIController : MonoBehaviour
 
     public void updateScore(string side){
         if(side == "Left"){
-            player1Score++;
+            player2Score++;
             score.text = player1Score.ToString()+ " - " +player2Score.ToString();
            
         }else if (side == "Right"){
-            player2Score++;
+            player1Score++;
             score.text = player1Score.ToString()+ " - " +player2Score.ToString();
         }
     } 
