@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -46,6 +47,24 @@ public class UIController : MonoBehaviour
         }else if(player2Score == 10){
             winText.text = "PLAYER 2 WIN";
         }
+        player1Score = 0;
+        player2Score = 0;
+    }
+
+    public void Restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void MainMenu(){
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void PvP(){
+        SceneManager.LoadScene("Game(PvP)");
+    }
+
+    public void PvE(){
+        SceneManager.LoadScene("Game(PvE)");
     }
 
 }
