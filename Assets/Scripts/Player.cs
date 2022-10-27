@@ -14,17 +14,10 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         // rb.position += speed * Time.deltaTime * moveVal;
         rb.velocity = new Vector2(moveVal.x * speed, moveVal.y * speed);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.transform.tag == "Wall"){
-            moveVal = Vector2.zero;
-        }
     }
 
     void OnMove(InputValue value){
