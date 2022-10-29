@@ -1016,6 +1016,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2010673413407797288, guid: 6e6871e09db4ec59998da453a34e1d8d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2010673415342315593, guid: 6e6871e09db4ec59998da453a34e1d8d, type: 3}
       propertyPath: m_Name
       value: UIOverlay
