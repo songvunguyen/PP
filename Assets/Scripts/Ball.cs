@@ -8,11 +8,14 @@ public class Ball : MonoBehaviour
     public float speed = 10f;
     public UIController ui;
     Vector2 lastV; //keep track of the velocity that ball hit the wall
+    AudioSource au;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.left * speed;
+        au = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,7 +43,9 @@ public class Ball : MonoBehaviour
         //   col.gameObject is the racket
         //   col.transform.position is the racket's position
         //   col.collider is the racket's collider
-
+        
+        au.Play();
+        
         // Hit the left Racket?
         if (other.gameObject.tag == "RacketLeft") {
             // Calculate hit Factor
