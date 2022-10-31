@@ -30,11 +30,11 @@ public class UIController : MonoBehaviour
     public void updateScore(string side){
         if(side == "Left"){
             player2Score++;
-            score.text = player1Score.ToString()+ " - " +player2Score.ToString();
+            score.text = "P1  " +player1Score.ToString()+ " - " +player2Score.ToString()+ "  P2";
            
         }else if (side == "Right"){
             player1Score++;
-            score.text = player1Score.ToString()+ " - " +player2Score.ToString();
+            score.text = "P1  " +player1Score.ToString()+ " - " +player2Score.ToString()+ "  P2";
         }
     }
 
